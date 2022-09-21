@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/TextWithSpeach.dart';
 
 import '../../../constants.dart';
 
@@ -25,10 +26,14 @@ class _CartCounterState extends State<CartCounter> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin / 2),
-          child: Text(
-            // if our item is less  then 10 then  it shows 01 02 like that
-            numOfItems.toString().padLeft(2, "0"),
-            style: Theme.of(context).textTheme.headline6,
+          child: TextWithSpeach(
+            textSpans: [
+              TextSpan(
+                // if our item is less  then 10 then  it shows 01 02 like that
+                text: numOfItems.toString().padLeft(2, "0"),
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
           ),
         ),
         buildOutlineButton(

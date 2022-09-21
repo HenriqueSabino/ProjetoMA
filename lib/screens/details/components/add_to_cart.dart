@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/components/TextWithSpeach.dart';
 import 'package:shop_app/models/Product.dart';
 
 import '../../../constants.dart';
@@ -25,13 +26,17 @@ class AddToCart extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color: MediaQuery.of(context).highContrast ? Theme.of(context).primaryColorLight : product.color,
+                color: MediaQuery.of(context).highContrast
+                    ? Theme.of(context).primaryColorLight
+                    : product.color,
               ),
             ),
             child: IconButton(
               icon: SvgPicture.asset(
                 "assets/icons/add_to_cart.svg",
-                color: MediaQuery.of(context).highContrast ? Theme.of(context).primaryColorLight : product.color,
+                color: MediaQuery.of(context).highContrast
+                    ? Theme.of(context).primaryColorLight
+                    : product.color,
               ),
               onPressed: () {},
             ),
@@ -43,7 +48,9 @@ class AddToCart extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(
-                    color: MediaQuery.of(context).highContrast ? Theme.of(context).primaryColorLight : product.color,
+                    color: MediaQuery.of(context).highContrast
+                        ? Theme.of(context).primaryColorLight
+                        : product.color,
                   ),
                 ),
                 child: TextButton(
@@ -53,12 +60,18 @@ class AddToCart extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {},
-                  child: Text(
-                    "Buy  Now".toUpperCase(),
-                    style: Theme.of(context).textTheme.bodyLarge.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MediaQuery.of(context).highContrast ? Theme.of(context).primaryColorLight : product.color,
-                    ),
+                  child: TextWithSpeach(
+                    textSpans: [
+                      TextSpan(
+                        text: "Buy  Now".toUpperCase(),
+                        style: Theme.of(context).textTheme.bodyLarge.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: MediaQuery.of(context).highContrast
+                                  ? Theme.of(context).primaryColorLight
+                                  : product.color,
+                            ),
+                      ),
+                    ],
                   ),
                 ),
               ),

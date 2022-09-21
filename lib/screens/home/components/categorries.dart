@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/TextWithSpeach.dart';
 
 import '../../../constants.dart';
 
@@ -17,12 +18,11 @@ class _CategoriesState extends State<Categories> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-
     double textHeight = _textSize(
         categories.first,
         Theme.of(context).textTheme.bodyLarge,
         MediaQuery.textScaleFactorOf(context));
-        
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin),
       child: SizedBox(
@@ -48,19 +48,30 @@ class _CategoriesState extends State<Categories> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              categories[index],
-              style: Theme.of(context).textTheme.bodyLarge.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color:
-                        selectedIndex == index ? kTextLightColor : (MediaQuery.of(context).highContrast ? kHighContrastTextLightColor : kTextLightColor),
-                  ),
+            TextWithSpeach(
+              textSpans: [
+                TextSpan(
+                  text: categories[index],
+                  style: Theme.of(context).textTheme.bodyLarge.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: selectedIndex == index
+                            ? kTextLightColor
+                            : (MediaQuery.of(context).highContrast
+                                ? kHighContrastTextLightColor
+                                : kTextLightColor),
+                      ),
+                ),
+              ],
             ),
             Container(
               margin: EdgeInsets.only(top: kDefaultPaddin / 4), //top padding 5
               height: 2,
               width: 30,
-              color: selectedIndex == index ? (MediaQuery.of(context).highContrast ? kHighContrastTextLightColor : Colors.black) : Colors.transparent,
+              color: selectedIndex == index
+                  ? (MediaQuery.of(context).highContrast
+                      ? kHighContrastTextLightColor
+                      : Colors.black)
+                  : Colors.transparent,
             )
           ],
         ),

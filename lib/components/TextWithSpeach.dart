@@ -57,21 +57,18 @@ class _TextWithSpeachState extends State<TextWithSpeach> {
 
     flutterTts.setStartHandler(() {
       setState(() {
-        print("Playing");
         ttsState = TtsState.playing;
       });
     });
 
     flutterTts.setCompletionHandler(() {
       setState(() {
-        print("Complete");
         ttsState = TtsState.stopped;
       });
     });
 
     flutterTts.setCancelHandler(() {
       setState(() {
-        print("Cancel");
         ttsState = TtsState.stopped;
       });
     });
@@ -79,14 +76,12 @@ class _TextWithSpeachState extends State<TextWithSpeach> {
     if (isWeb || isIOS || isWindows) {
       flutterTts.setPauseHandler(() {
         setState(() {
-          print("Paused");
           ttsState = TtsState.paused;
         });
       });
 
       flutterTts.setContinueHandler(() {
         setState(() {
-          print("Continued");
           ttsState = TtsState.continued;
         });
       });
@@ -94,7 +89,6 @@ class _TextWithSpeachState extends State<TextWithSpeach> {
 
     flutterTts.setErrorHandler((msg) {
       setState(() {
-        print("error: $msg");
         ttsState = TtsState.stopped;
       });
     });
@@ -157,9 +151,7 @@ class _TextWithSpeachState extends State<TextWithSpeach> {
         children: textSpansWithRecognizer(element.children),
         recognizer: LongPressGestureRecognizer()
           ..onLongPress = () {
-            print("Long press triggered");
             if (isPlaying) {
-              print("Lonng press playing");
               _stop();
             } else {
               _speak(element.text);

@@ -22,21 +22,32 @@ class DetailsScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: MediaQuery.of(context).highContrast ? Theme.of(context).backgroundColor : product.color,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset(
-          'assets/icons/back.svg',
-          color: Colors.white,
+      leading: Semantics(
+        label: "Back",
+        child: IconButton(
+          icon: SvgPicture.asset(
+            'assets/icons/back.svg',
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
-        onPressed: () => Navigator.pop(context),
       ),
       actions: <Widget>[
-        IconButton(
-          icon: SvgPicture.asset("assets/icons/search.svg"),
-          onPressed: () {},
+        Semantics(
+          label: "Search",
+          onTapHint: "Search products",
+          child: IconButton(
+            icon: SvgPicture.asset("assets/icons/search.svg"),
+            onPressed: () {},
+          ),
         ),
-        IconButton(
-          icon: SvgPicture.asset("assets/icons/cart.svg"),
-          onPressed: () {},
+        Semantics(
+          label: "Cart",
+          onTapHint: "View your cart",
+          child: IconButton(
+            icon: SvgPicture.asset("assets/icons/cart.svg"),
+            onPressed: () {},
+          ),
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

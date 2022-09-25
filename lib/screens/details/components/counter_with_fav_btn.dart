@@ -14,15 +14,22 @@ class CounterWithFavBtn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         CartCounter(),
-        Container(
-          padding: EdgeInsets.all(8),
-          height: 32,
-          width: 32,
-          decoration: BoxDecoration(
-            color: Color(0xFFFF6464),
-            shape: BoxShape.circle,
+        Semantics(
+          button: true,
+          label: "Favorite product",
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(8),
+              height: 32,
+              width: 32,
+              decoration: BoxDecoration(
+                color: Color(0xFFFF6464),
+                shape: BoxShape.circle,
+              ),
+              child: SvgPicture.asset("assets/icons/heart.svg"),
+            ),
           ),
-          child: SvgPicture.asset("assets/icons/heart.svg"),
         )
       ],
     );

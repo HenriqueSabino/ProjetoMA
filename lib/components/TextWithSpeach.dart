@@ -149,14 +149,10 @@ class _TextWithSpeachState extends State<TextWithSpeach> {
         text: element.text,
         style: element.style,
         children: textSpansWithRecognizer(element.children),
-        recognizer: LongPressGestureRecognizer()
-          ..onLongPress = () {
-            if (isPlaying) {
-              _stop();
-            } else {
-              _speak(element.text);
-            }
-          },
+        recognizer: !MediaQuery.of(context).accessibleNavigation
+            ? (LongPressGestureRecognizer()
+              ..onLongPress = () => this._playOrStopText(element))
+            : element.recognizer,
         mouseCursor: element.mouseCursor,
         onEnter: element.onEnter,
         onExit: element.onExit,
@@ -175,5 +171,13 @@ class _TextWithSpeachState extends State<TextWithSpeach> {
         children: textSpansWithRecognizer(widget.textSpans),
       ),
     );
+  }
+
+  void _playOrStopText(TextSpan element) {
+    if (isPlaying) {
+      _stop();
+    } else {
+      _speak(element.text);
+    }
   }
 }

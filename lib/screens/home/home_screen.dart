@@ -16,27 +16,43 @@ class HomeScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/back.svg"),
-        color: MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
-        onPressed: () {},
-      ),
-      actions: <Widget>[
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/search.svg",
-            // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
-          ),
+      leading: Semantics(
+        label: "Back",
+        child: IconButton(
+          icon: SvgPicture.asset("assets/icons/back.svg"),
+          color:
+              MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
           onPressed: () {},
         ),
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/cart.svg",
-            // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
+      ),
+      actions: <Widget>[
+        Semantics(
+          label: "Search",
+          onTapHint: "Search products",
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/search.svg",
+              // By default our  icon color is white
+              color: MediaQuery.of(context).highContrast
+                  ? Colors.white
+                  : Colors.black,
+            ),
+            onPressed: () {},
           ),
-          onPressed: () {},
+        ),
+        Semantics(
+          label: "Cart",
+          onTapHint: "View your cart",
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/cart.svg",
+              // By default our  icon color is white
+              color: MediaQuery.of(context).highContrast
+                  ? Colors.white
+                  : Colors.black,
+            ),
+            onPressed: () {},
+          ),
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

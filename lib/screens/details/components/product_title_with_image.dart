@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/TextWithSpeach.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/screens/components/semantic_image.dart';
 import 'package:shop_app/screens/image/image_screen.dart';
 
 import '../../../constants.dart';
@@ -20,24 +21,28 @@ class ProductTitleWithImage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          TextWithSpeach(
-            textSpans: [
-              TextSpan(
-                text: "Aristocratic Hand Bag",
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
-          ),
-          TextWithSpeach(
-            textSpans: [
-              TextSpan(
-                text: product.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ],
+          MergeSemantics(
+            child: Column(
+              children: [
+                TextWithSpeach(
+                  textSpans: [
+                    TextSpan(
+                      text: "Aristocratic Hand Bag",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+                TextWithSpeach(
+                  textSpans: [
+                    TextSpan(
+                      text: product.title,
+                      style: Theme.of(context).textTheme.headline4.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           SizedBox(height: kDefaultPaddin),
           Center(
@@ -47,15 +52,10 @@ class ProductTitleWithImage extends StatelessWidget {
               child: Hero(
                 tag: "${product.id}",
                 child: GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ImageScreen(
-                        product: this.product,
-                      ),
-                    ),
-                  ),
-                  child: Image.asset(
+                  excludeFromSemantics:
+                      MediaQuery.of(context).accessibleNavigation,
+                  onTap: () => _openZoomImage(context),
+                  child: SemanticImage(
                     product.image,
                     fit: BoxFit.fitHeight,
                   ),
@@ -66,5 +66,18 @@ class ProductTitleWithImage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _openZoomImage(BuildContext context) {
+    if (!MediaQuery.of(context).accessibleNavigation) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ImageScreen(
+            product: this.product,
+          ),
+        ),
+      );
+    }
   }
 }

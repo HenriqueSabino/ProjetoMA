@@ -31,14 +31,17 @@ class AddToCart extends StatelessWidget {
                     : product.color,
               ),
             ),
-            child: IconButton(
-              icon: SvgPicture.asset(
-                "assets/icons/add_to_cart.svg",
-                color: MediaQuery.of(context).highContrast
-                    ? Theme.of(context).primaryColorLight
-                    : product.color,
+            child: Semantics(
+              label: "Add to cart",
+              child: IconButton(
+                icon: SvgPicture.asset(
+                  "assets/icons/add_to_cart.svg",
+                  color: MediaQuery.of(context).highContrast
+                      ? Theme.of(context).primaryColorLight
+                      : product.color,
+                ),
+                onPressed: () {},
               ),
-              onPressed: () {},
             ),
           ),
           Expanded(
@@ -53,25 +56,28 @@ class AddToCart extends StatelessWidget {
                         : product.color,
                   ),
                 ),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: TextWithSpeach(
-                    textSpans: [
-                      TextSpan(
-                        text: "Buy  Now".toUpperCase(),
-                        style: Theme.of(context).textTheme.bodyLarge.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: MediaQuery.of(context).highContrast
-                                  ? Theme.of(context).primaryColorLight
-                                  : product.color,
-                            ),
+                child: Semantics(
+                  label: "Buy now",
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
                       ),
-                    ],
+                    ),
+                    onPressed: () {},
+                    child: TextWithSpeach(
+                      textSpans: [
+                        TextSpan(
+                          text: "Buy Now".toUpperCase(),
+                          style: Theme.of(context).textTheme.bodyLarge.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: MediaQuery.of(context).highContrast
+                                    ? Theme.of(context).primaryColorLight
+                                    : product.color,
+                              ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -18,49 +18,52 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return MergeSemantics(
       child: Semantics(
-        onTap: press,
         onTapHint: "open product",
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(kDefaultPaddin),
-                // For  demo we use fixed height  and width
-                // Now we dont need them
-                // height: 180,
-                // width: 160,
-                decoration: BoxDecoration(
-                  color: product.color,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Hero(
-                  tag: "${product.id}",
-                  child: SemanticImage(product.image),
+        child: GestureDetector(
+          onTap: press,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(kDefaultPaddin),
+                  // For  demo we use fixed height  and width
+                  // Now we dont need them
+                  // height: 180,
+                  // width: 160,
+                  decoration: BoxDecoration(
+                    color: product.color,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Hero(
+                    tag: "${product.id}",
+                    child: SemanticImage(product.image),
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
-              child: TextWithSpeach(
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
+                child: TextWithSpeach(
+                  textSpans: [
+                    TextSpan(
+                      // products is out demo list
+                      text: product.title,
+                      style: TextStyle(color: kTextLightColor),
+                    ),
+                  ],
+                ),
+              ),
+              TextWithSpeach(
                 textSpans: [
                   TextSpan(
-                    // products is out demo list
-                    text: product.title,
-                    style: TextStyle(color: kTextLightColor),
+                    text: "\$${product.price}",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
-              ),
-            ),
-            TextWithSpeach(
-              textSpans: [
-                TextSpan(
-                  text: "\$${product.price}",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

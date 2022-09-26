@@ -8,17 +8,22 @@ import '../../../constants.dart';
 class ItemCard extends StatelessWidget {
   final Product product;
   final Function press;
-  const ItemCard({
-    Key key,
-    this.product,
-    this.press,
-  }) : super(key: key);
+  final int index;
+  final int totalCount;
+  const ItemCard(
+      {Key key,
+      @required this.product,
+      @required this.press,
+      @required this.index,
+      @required this.totalCount})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MergeSemantics(
       child: Semantics(
-        onTapHint: "open product",
+        label: "Item ${(this.index + 1)} of ${this.totalCount}",
+        onTapHint: "Open product",
         child: GestureDetector(
           onTap: press,
           child: Column(
@@ -27,10 +32,6 @@ class ItemCard extends StatelessWidget {
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(kDefaultPaddin),
-                  // For  demo we use fixed height  and width
-                  // Now we dont need them
-                  // height: 180,
-                  // width: 160,
                   decoration: BoxDecoration(
                     color: product.color,
                     borderRadius: BorderRadius.circular(16),

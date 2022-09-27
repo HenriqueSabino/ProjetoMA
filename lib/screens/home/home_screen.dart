@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/screens/home/components/body.dart';
 
+import '../tutorials/tutorial_screen_home.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,8 @@ class HomeScreen extends StatelessWidget {
       elevation: 0,
       leading: IconButton(
         icon: SvgPicture.asset("assets/icons/back.svg"),
-        color: MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
+        color:
+            MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
         onPressed: () {},
       ),
       actions: <Widget>[
@@ -26,7 +29,9 @@ class HomeScreen extends StatelessWidget {
           icon: SvgPicture.asset(
             "assets/icons/search.svg",
             // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
+            color: MediaQuery.of(context).highContrast
+                ? Colors.white
+                : Colors.black,
           ),
           onPressed: () {},
         ),
@@ -34,9 +39,28 @@ class HomeScreen extends StatelessWidget {
           icon: SvgPicture.asset(
             "assets/icons/cart.svg",
             // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
+            color: MediaQuery.of(context).highContrast
+                ? Colors.white
+                : Colors.black,
           ),
           onPressed: () {},
+        ),
+        IconButton(
+          icon: SvgPicture.asset(
+            "assets/icons/question-mark-svgrepo-com.svg",
+            // By default our  icon color is white
+            color: MediaQuery.of(context).highContrast
+                ? Colors.white
+                : Color.fromARGB(255, 252, 6, 6),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TutorialHomeScreen(),
+              ),
+            );
+          },
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

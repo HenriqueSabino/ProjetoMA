@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/TextWithSpeach.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/screens/image/image_screen.dart';
 
@@ -19,16 +20,24 @@ class ProductTitleWithImage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            "Aristocratic Hand Bag",
-            style: TextStyle(color: Colors.white),
+          TextWithSpeach(
+            textSpans: [
+              TextSpan(
+                text: "Aristocratic Hand Bag",
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
           ),
-          Text(
-            product.title,
-            style: Theme.of(context)
-                .textTheme
-                .headline4
-                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+          TextWithSpeach(
+            textSpans: [
+              TextSpan(
+                text: product.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline4
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
           SizedBox(height: kDefaultPaddin),
           Center(

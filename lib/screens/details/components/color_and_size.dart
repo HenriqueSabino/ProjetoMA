@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/TextWithSpeach.dart';
 import 'package:shop_app/models/Product.dart';
 
 import '../../../constants.dart';
@@ -19,7 +20,7 @@ class ColorAndSize extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text("Color"),
+              TextWithSpeach(textSpans: [TextSpan(text: "Color")]),
               Row(
                 children: <Widget>[
                   ColorDot(
@@ -34,27 +35,28 @@ class ColorAndSize extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: RichText(
-            text: TextSpan(
-              style: TextStyle(color: kTextColor),
-              children: [
-                TextSpan(
-                  text: "Size\n",
-                  style: TextStyle(
-                    color: MediaQuery.of(context).highContrast ? kHighContrastTextLightColor : kTextColor,
+          child: TextWithSpeach(
+            textSpans: <TextSpan>[
+              TextSpan(
+                style: TextStyle(color: kTextColor),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: "Size\n",
+                    style: TextStyle(
+                      color: MediaQuery.of(context).highContrast
+                          ? kHighContrastTextLightColor
+                          : kTextColor,
+                    ),
                   ),
-                ),
-                TextSpan(
-                  text: "${product.size} cm",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      .copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                )
-              ],
-            ),
+                  TextSpan(
+                    text: "${product.size} cm",
+                    style: Theme.of(context).textTheme.headline5.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ],

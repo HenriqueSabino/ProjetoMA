@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shop_app/components/TextWithSpeach.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Product.dart';
 
@@ -31,7 +32,9 @@ class Body extends StatelessWidget {
                 ),
                 // height: 500,
                 decoration: BoxDecoration(
-                  color: MediaQuery.of(context).highContrast ? Theme.of(context).primaryColorDark : Colors.white,
+                  color: MediaQuery.of(context).highContrast
+                      ? Theme.of(context).primaryColorDark
+                      : Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
@@ -40,31 +43,26 @@ class Body extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Price\n",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: MediaQuery.of(context).highContrast ? kHighContrastTextLightColor : kTextColor
-                                ),
-                          ),
-                          TextSpan(
-                            text: "\$${product.price}",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline4
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: MediaQuery.of(context).highContrast ? kHighContrastTextLightColor : kTextColor,
-                                ),
-                          ),
-                        ],
-                      ),
+                    TextWithSpeach(
+                      textSpans: [
+                        TextSpan(
+                          text: "Price\n",
+                          style: Theme.of(context).textTheme.bodySmall.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: MediaQuery.of(context).highContrast
+                                  ? kHighContrastTextLightColor
+                                  : kTextColor),
+                        ),
+                        TextSpan(
+                          text: "\$${product.price}",
+                          style: Theme.of(context).textTheme.headline4.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: MediaQuery.of(context).highContrast
+                                    ? kHighContrastTextLightColor
+                                    : kTextColor,
+                              ),
+                        ),
+                      ],
                     ),
                     SizedBox(height: kDefaultPaddin / 2),
                     ColorAndSize(product: product),

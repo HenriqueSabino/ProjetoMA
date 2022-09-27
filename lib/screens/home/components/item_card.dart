@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/TextWithSpeach.dart';
 import 'package:shop_app/models/Product.dart';
 
 import '../../../constants.dart';
@@ -38,15 +39,23 @@ class ItemCard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
-            child: Text(
-              // products is out demo list
-              product.title,
-              style: TextStyle(color: kTextLightColor),
+            child: TextWithSpeach(
+              textSpans: [
+                TextSpan(
+                  // products is out demo list
+                  text: product.title,
+                  style: TextStyle(color: kTextLightColor),
+                ),
+              ],
             ),
           ),
-          Text(
-            "\$${product.price}",
-            style: TextStyle(fontWeight: FontWeight.bold),
+          TextWithSpeach(
+            textSpans: [
+              TextSpan(
+                text: "\$${product.price}",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
           )
         ],
       ),

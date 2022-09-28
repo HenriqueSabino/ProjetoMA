@@ -4,18 +4,20 @@ import 'package:shop_app/constants.dart';
 
 import '../../components/TutorialCarousel.dart';
 
-class TutorialHomeScreen extends StatelessWidget {
+class TutorialDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
       body: TutorialCarousel(
         tutorials: [
-          TutorialData(imagePath: 'assets/images/home_1.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_2.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_3.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_4.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_5.jpg', text: "A"),
+          TutorialData(imagePath: 'assets/images/details_1.jpg', text: "A"),
+          TutorialData(imagePath: 'assets/images/details_2.jpg', text: "A"),
+          TutorialData(imagePath: 'assets/images/details_3.jpg', text: "A"),
+          TutorialData(imagePath: 'assets/images/details_4.jpg', text: "A"),
+          TutorialData(imagePath: 'assets/images/details_5.jpg', text: "A"),
+          TutorialData(imagePath: 'assets/images/details_6.jpg', text: "A"),
+          TutorialData(imagePath: 'assets/images/details_7.jpg', text: "A"),
         ],
       ),
     );

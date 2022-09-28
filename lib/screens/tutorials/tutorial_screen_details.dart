@@ -11,13 +11,34 @@ class TutorialDetailsScreen extends StatelessWidget {
       appBar: buildAppBar(context),
       body: TutorialCarousel(
         tutorials: [
-          TutorialData(imagePath: 'assets/images/details_1.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/details_2.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/details_3.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/details_4.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/details_5.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/details_6.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/details_7.jpg', text: "A"),
+          TutorialData(
+            imagePath: 'assets/images/details_1.jpg',
+            text: "Ampliar imagem do produto",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/details_2.jpg',
+            text: "Escolher cor do produto",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/details_3.jpg',
+            text: "Quantidade de itens",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/details_4.jpg',
+            text: "Adicionar o item ao carrinho",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/details_5.jpg',
+            text: "Ir para o carrinho",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/details_6.jpg',
+            text: "Favoritar o produto",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/details_7.jpg',
+            text: "Voltar para tela de compra",
+          ),
         ],
       ),
     );

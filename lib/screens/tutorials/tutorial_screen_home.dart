@@ -11,11 +11,26 @@ class TutorialHomeScreen extends StatelessWidget {
       appBar: buildAppBar(context),
       body: TutorialCarousel(
         tutorials: [
-          TutorialData(imagePath: 'assets/images/home_1.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_2.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_3.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_4.jpg', text: "A"),
-          TutorialData(imagePath: 'assets/images/home_5.jpg', text: "A"),
+          TutorialData(
+            imagePath: 'assets/images/home_2.jpg',
+            text: "Selecione uma categoria",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/home_1.jpg',
+            text: "Selecione um produto",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/home_3.jpg',
+            text: "Realizar pesquisa",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/home_4.jpg',
+            text: "Ir para o carrinho",
+          ),
+          TutorialData(
+            imagePath: 'assets/images/home_5.jpg',
+            text: "Visitar tutorial de compra",
+          ),
         ],
       ),
     );

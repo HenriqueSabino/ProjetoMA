@@ -28,38 +28,53 @@ class DetailsScreen extends StatelessWidget {
           ? Theme.of(context).backgroundColor
           : product.color,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset(
-          'assets/icons/back.svg',
-          color: Colors.white,
+      leading: Semantics(
+        label: "Back",
+        child: IconButton(
+          icon: SvgPicture.asset(
+            'assets/icons/back.svg',
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
-        onPressed: () => Navigator.pop(context),
       ),
       actions: <Widget>[
-        IconButton(
-          icon: SvgPicture.asset("assets/icons/search.svg"),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: SvgPicture.asset("assets/icons/cart.svg"),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/question-mark-svgrepo-com.svg",
-            // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast
-                ? Colors.white
-                : Color.fromARGB(255, 252, 6, 6),
+        Semantics(
+          label: "Search",
+          onTapHint: "Search products",
+          child: IconButton(
+            icon: SvgPicture.asset("assets/icons/search.svg"),
+            onPressed: () {},
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => TutorialDetailsScreen(),
-              ),
-            );
-          },
+        ),
+        Semantics(
+          label: "Cart",
+          onTapHint: "View your cart",
+          child: IconButton(
+            icon: SvgPicture.asset("assets/icons/cart.svg"),
+            onPressed: () {},
+          ),
+        ),
+        Semantics(
+          label: "Product page tutorial",
+          onTapHint: "Open product page tutorial",
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/question-mark-svgrepo-com.svg",
+              // By default our  icon color is white
+              color: MediaQuery.of(context).highContrast
+                  ? Colors.white
+                  : Color.fromARGB(255, 252, 6, 6),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TutorialDetailsScreen(),
+                ),
+              );
+            },
+          ),
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

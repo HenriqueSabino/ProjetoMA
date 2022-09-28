@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:shop_app/components/TextWithSpeach.dart';
 import 'package:shop_app/constants.dart';
 
@@ -21,38 +24,46 @@ class TutorialCarousel extends StatelessWidget {
         (tutorialData) {
           return Builder(
             builder: (BuildContext context) {
-              return Column(
-                children: [
-                  Expanded(
-                    flex: 10,
-                    child: Image.asset(
-                      tutorialData.imagePath,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  SizedBox(
-                    height: kDefaultPaddin,
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: SingleChildScrollView(
-                      child: TextWithSpeach(
-                        textSpans: [
-                          TextSpan(
-                            text: tutorialData.text,
-                            style:
-                                Theme.of(context).textTheme.bodySmall.copyWith(
+              return MergeSemantics(
+                child: Semantics(
+                  hint:
+                      "Scroll left and right to advance or go back in the tutorial",
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 10,
+                        child: Image.asset(
+                          tutorialData.imagePath,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      SizedBox(
+                        height: kDefaultPaddin,
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: SingleChildScrollView(
+                          child: TextWithSpeach(
+                            textSpans: [
+                              TextSpan(
+                                text: tutorialData.text,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    .copyWith(
                                       fontWeight: FontWeight.bold,
                                       color: MediaQuery.of(context).highContrast
                                           ? kHighContrastTextLightColor
                                           : kTextColor,
                                     ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               );
             },
           );

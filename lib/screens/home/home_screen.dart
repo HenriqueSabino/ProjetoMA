@@ -18,49 +18,64 @@ class HomeScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/back.svg"),
-        color:
-            MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
-        onPressed: () {},
+      leading: Semantics(
+        label: "Back",
+        child: IconButton(
+          icon: SvgPicture.asset("assets/icons/back.svg"),
+          color:
+              MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
+          onPressed: () {},
+        ),
       ),
       actions: <Widget>[
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/search.svg",
-            // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast
-                ? Colors.white
-                : Colors.black,
+        Semantics(
+          label: "Search",
+          onTapHint: "Search products",
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/search.svg",
+              // By default our  icon color is white
+              color: MediaQuery.of(context).highContrast
+                  ? Colors.white
+                  : Colors.black,
+            ),
+            onPressed: () {},
           ),
-          onPressed: () {},
         ),
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/cart.svg",
-            // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast
-                ? Colors.white
-                : Colors.black,
+        Semantics(
+          label: "Cart",
+          onTapHint: "View your cart",
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/cart.svg",
+              // By default our  icon color is white
+              color: MediaQuery.of(context).highContrast
+                  ? Colors.white
+                  : Colors.black,
+            ),
+            onPressed: () {},
           ),
-          onPressed: () {},
         ),
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/question-mark-svgrepo-com.svg",
-            // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast
-                ? Colors.white
-                : Color.fromARGB(255, 252, 6, 6),
+        Semantics(
+          label: "Homescreen tutorial",
+          onTapHint: "Open homescreen tutorial",
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/question-mark-svgrepo-com.svg",
+              // By default our  icon color is white
+              color: MediaQuery.of(context).highContrast
+                  ? Colors.white
+                  : Color.fromARGB(255, 252, 6, 6),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TutorialHomeScreen(),
+                ),
+              );
+            },
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => TutorialHomeScreen(),
-              ),
-            );
-          },
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

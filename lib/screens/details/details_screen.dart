@@ -4,6 +4,8 @@ import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/screens/details/components/body.dart';
 
+import '../tutorials/tutorial_screen_details.dart';
+
 class DetailsScreen extends StatelessWidget {
   final Product product;
 
@@ -12,7 +14,9 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // each product have a color
-      backgroundColor: MediaQuery.of(context).highContrast ? Theme.of(context).backgroundColor : product.color,
+      backgroundColor: MediaQuery.of(context).highContrast
+          ? Theme.of(context).backgroundColor
+          : product.color,
       appBar: buildAppBar(context),
       body: Body(product: product),
     );
@@ -20,7 +24,9 @@ class DetailsScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: MediaQuery.of(context).highContrast ? Theme.of(context).backgroundColor : product.color,
+      backgroundColor: MediaQuery.of(context).highContrast
+          ? Theme.of(context).backgroundColor
+          : product.color,
       elevation: 0,
       leading: Semantics(
         label: "Back",
@@ -48,6 +54,23 @@ class DetailsScreen extends StatelessWidget {
             icon: SvgPicture.asset("assets/icons/cart.svg"),
             onPressed: () {},
           ),
+        ),
+        IconButton(
+          icon: SvgPicture.asset(
+            "assets/icons/question-mark-svgrepo-com.svg",
+            // By default our  icon color is white
+            color: MediaQuery.of(context).highContrast
+                ? Colors.white
+                : Color.fromARGB(255, 252, 6, 6),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TutorialDetailsScreen(),
+              ),
+            );
+          },
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

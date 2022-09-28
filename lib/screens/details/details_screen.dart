@@ -55,22 +55,26 @@ class DetailsScreen extends StatelessWidget {
             onPressed: () {},
           ),
         ),
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/question-mark-svgrepo-com.svg",
-            // By default our  icon color is white
-            color: MediaQuery.of(context).highContrast
-                ? Colors.white
-                : Color.fromARGB(255, 252, 6, 6),
+        Semantics(
+          label: "Product page tutorial",
+          onTapHint: "Open product page tutorial",
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/question-mark-svgrepo-com.svg",
+              // By default our  icon color is white
+              color: MediaQuery.of(context).highContrast
+                  ? Colors.white
+                  : Color.fromARGB(255, 252, 6, 6),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TutorialDetailsScreen(),
+                ),
+              );
+            },
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => TutorialDetailsScreen(),
-              ),
-            );
-          },
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

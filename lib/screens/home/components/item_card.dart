@@ -22,7 +22,7 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return MergeSemantics(
       child: Semantics(
-        label: "Item ${(this.index + 1)} of ${this.totalCount}",
+        hint: "Item ${(this.index + 1)} of ${this.totalCount}",
         onTapHint: "Open product",
         child: GestureDetector(
           onTap: press,

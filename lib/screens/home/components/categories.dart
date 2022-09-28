@@ -42,8 +42,8 @@ class _CategoriesState extends State<Categories> {
   Widget buildCategory(int index) {
     return Semantics(
       button: true,
-      label:
-          "Item ${(index + 1)} of ${categories.length}, ${categories[index]}",
+      label: categories[index],
+      hint: "Item ${(index + 1)} of ${categories.length}",
       onTapHint: "filter categories",
       child: GestureDetector(
         onTap: () {

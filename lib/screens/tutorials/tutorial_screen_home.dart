@@ -13,23 +13,23 @@ class TutorialHomeScreen extends StatelessWidget {
         tutorials: [
           TutorialData(
             imagePath: 'assets/images/home_2.jpg',
-            text: "Selecione uma categoria",
+            text: "Select a category",
           ),
           TutorialData(
             imagePath: 'assets/images/home_1.jpg',
-            text: "Selecione um produto",
+            text: "Select a product",
           ),
           TutorialData(
             imagePath: 'assets/images/home_3.jpg',
-            text: "Realizar pesquisa",
+            text: "Saerch for what you need",
           ),
           TutorialData(
             imagePath: 'assets/images/home_4.jpg',
-            text: "Ir para o carrinho",
+            text: "Go to cart",
           ),
           TutorialData(
             imagePath: 'assets/images/home_5.jpg',
-            text: "Visitar tutorial de compra",
+            text: "Open this tutorial",
           ),
         ],
       ),
@@ -40,11 +40,14 @@ class TutorialHomeScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/back.svg"),
-        color:
-            MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
-        onPressed: () => Navigator.pop(context),
+      leading: Semantics(
+        label: "Back",
+        child: IconButton(
+          icon: SvgPicture.asset("assets/icons/back.svg"),
+          color:
+              MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       actions: <Widget>[SizedBox(width: kDefaultPaddin / 2)],
     );

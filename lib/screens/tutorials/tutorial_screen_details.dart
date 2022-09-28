@@ -13,31 +13,31 @@ class TutorialDetailsScreen extends StatelessWidget {
         tutorials: [
           TutorialData(
             imagePath: 'assets/images/details_1.jpg',
-            text: "Ampliar imagem do produto",
+            text: "Zoom product image",
           ),
           TutorialData(
             imagePath: 'assets/images/details_2.jpg',
-            text: "Escolher cor do produto",
+            text: "Choose product color",
           ),
           TutorialData(
             imagePath: 'assets/images/details_3.jpg',
-            text: "Quantidade de itens",
+            text: "Items quantity",
           ),
           TutorialData(
             imagePath: 'assets/images/details_4.jpg',
-            text: "Adicionar o item ao carrinho",
+            text: "Add to cart",
           ),
           TutorialData(
             imagePath: 'assets/images/details_5.jpg',
-            text: "Ir para o carrinho",
+            text: "Go to cart",
           ),
           TutorialData(
             imagePath: 'assets/images/details_6.jpg',
-            text: "Favoritar o produto",
+            text: "Favorite product",
           ),
           TutorialData(
             imagePath: 'assets/images/details_7.jpg',
-            text: "Voltar para tela de compra",
+            text: "Go back to shopping page",
           ),
         ],
       ),
@@ -48,11 +48,14 @@ class TutorialDetailsScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/back.svg"),
-        color:
-            MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
-        onPressed: () => Navigator.pop(context),
+      leading: Semantics(
+        label: "Back",
+        child: IconButton(
+          icon: SvgPicture.asset("assets/icons/back.svg"),
+          color:
+              MediaQuery.of(context).highContrast ? Colors.white : Colors.black,
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       actions: <Widget>[SizedBox(width: kDefaultPaddin / 2)],
     );
